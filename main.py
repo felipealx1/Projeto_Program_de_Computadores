@@ -30,3 +30,38 @@ class GymManagement:
         with open(filename, 'r') as file:
             data = json.load(file)
             self.members = [Member(member['name'], member['cpf'], member['plan'], member['value']) for member in data]
+
+class AcademiaApp:
+    def _init_(self, master):
+        self.master = master
+        self.master.title("Sistema de Academia")
+        self.master.configure(bg="#f0f0f0")
+
+        self.gym_manager = GymManagement()
+
+        self.setup_ui()
+
+    def setup_ui(self):
+        # Definindo um estilo para os botões
+        button_style = {
+            'bg': "#008080",
+            'fg': "white",
+            'cursor': "hand2",
+            'font': ('Arial', 12)
+        }
+
+        self.frame_adicionar = tk.Frame(self.master, bg="#f0f0f0")
+        self.frame_adicionar.pack(pady=10)
+
+        self.frame_lista = tk.Frame(self.master, bg="#f0f0f0")
+        self.frame_lista.pack(padx=10, pady=5)
+
+        self.label_nome = tk.Label(self.frame_adicionar, text="Nome:", bg="#f0f0f0")
+        self.label_nome.grid(row=0, column=0, padx=5, pady=5, sticky="e")
+        self.entry_nome = tk.Entry(self.frame_adicionar, width=50)
+        self.entry_nome.grid(row=0, column=1, padx=5, pady=5)
+
+        self.label_cpf = tk.Label(self.frame_adicionar, text="CPF:", bg="#f0f0f0")
+        self.label_cpf.grid(row=1, column=0, padx=5, pady=5, sticky="e")
+        self.entry_cpf = tk.Entry(self.frame_adicionar, width=30)
+        self.entry_cpf.grid(row=1, column=1, padx=5, pady=5)
