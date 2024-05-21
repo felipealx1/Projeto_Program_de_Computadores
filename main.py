@@ -103,3 +103,50 @@ class AcademiaApp:
             self.clear_entry_fields()
         else:
             messagebox.showwarning("Atenção", "Por favor, preencha todos os campos.")
+            def editar_membro(self):
+        try:
+            index = self.lista_membros.curselection()[0]
+            member = self.gym_manager.members[index]
+            self.entry_nome.delete(0, tk.END)
+            self.entry_cpf.delete(0, tk.END)
+            self.entry_plano.delete(0, tk.END)
+            self.entry_valor.delete(0, tk.END)
+            self.entry_nome.insert(0, member.name)
+            self.entry_cpf.insert(0, member.cpf)
+            self.entry_plano.insert(0, member.plan)
+            self.entry_valor.insert(0, member.value)
+        except IndexError:
+            messagebox.showwarning("Atenção", "Por favor, selecione um membro para editar.")
+
+    def registrar_pagamento(self):
+        try:
+            index = self.lista_membros.curselection()[0]
+            member = self.gym_manager.members[index]
+            self.gym_manager.remove_member(index)
+            messagebox.showinfo("Pagamento Registrado", f"Pagamento registrado para:\n{member.name} - CPF: {member.cpf} - Plano: {member.plan} - Valor: R${member.value}")
+            self.refresh_member_list()
+        except IndexError:
+            messagebox.showwarning("Atenção", "Por favor, selecione um membro para registrar o pagamento.")
+
+    def gerar_relatorio(self):
+        members = self.gym_manager.get_member_list()
+        messagebox.showinfo("Relatório de Membros", f"Total de membros: {len(members)}\n\nLista de Membros:\n\n{chr(10).join(members)}")
+
+    def refresh_member_list(self):
+        self.lista_membros.delete(0, tk.END)
+        for member in self.gym_manager.get_member_list():
+            self.lista_membros.insert(tk.END, member)
+
+    def clear_entry_fields(self):
+        self.entry_nome.delete(0, tk.END)
+        self.entry_cpf.delete(0, tk.END)
+        self.entry_plano.delete(0, tk.END)
+        self.entry_valor.delete(0, tk.END)
+
+def main():
+    root = tk.Tk()
+    app = AcademiaApp(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
