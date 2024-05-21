@@ -65,3 +65,41 @@ class AcademiaApp:
         self.label_cpf.grid(row=1, column=0, padx=5, pady=5, sticky="e")
         self.entry_cpf = tk.Entry(self.frame_adicionar, width=30)
         self.entry_cpf.grid(row=1, column=1, padx=5, pady=5)
+
+        self.label_plano = tk.Label(self.frame_adicionar, text="Plano:", bg="#f0f0f0")
+        self.label_plano.grid(row=2, column=0, padx=5, pady=5, sticky="e")
+        self.entry_plano = tk.Entry(self.frame_adicionar, width=30)
+        self.entry_plano.grid(row=2, column=1, padx=5, pady=5)
+
+        self.label_valor = tk.Label(self.frame_adicionar, text="Valor:", bg="#f0f0f0")
+        self.label_valor.grid(row=3, column=0, padx=5, pady=5, sticky="e")
+        self.entry_valor = tk.Entry(self.frame_adicionar, width=30)
+        self.entry_valor.grid(row=3, column=1, padx=5, pady=5)
+
+        self.botao_adicionar = tk.Button(self.frame_adicionar, text="Adicionar Membro", command=self.adicionar_membro, **button_style)
+        self.botao_adicionar.grid(row=4, columnspan=2, pady=10, sticky="ew")
+
+        self.botao_editar_membro = tk.Button(self.frame_lista, text="Editar Membro", command=self.editar_membro, **button_style)
+        self.botao_editar_membro.grid(row=0, column=0, pady=5, padx=5, sticky='ew')
+
+        self.botao_registrar_pagamento = tk.Button(self.frame_lista, text="Registrar Pagamento", command=self.registrar_pagamento, **button_style)
+        self.botao_registrar_pagamento.grid(row=1, column=0, pady=5, padx=5, sticky='ew')
+
+        self.botao_gerar_relatorio = tk.Button(self.frame_lista, text="Gerar Relatório", command=self.gerar_relatorio, **button_style)
+        self.botao_gerar_relatorio.grid(row=2, column=0, pady=5, padx=5, sticky='ew')
+
+        self.lista_membros = tk.Listbox(self.frame_lista, width=70)
+        self.lista_membros.grid(row=0, column=1, rowspan=5)
+
+    def adicionar_membro(self):
+        nome = self.entry_nome.get()
+        cpf = self.entry_cpf.get()
+        plano = self.entry_plano.get()
+        valor = self.entry_valor.get()
+
+        if nome and cpf and plano and valor:
+            self.gym_manager.add_member(Member(nome, cpf, plano, valor))
+            self.refresh_member_list()
+            self.clear_entry_fields()
+        else:
+            messagebox.showwarning("Atenção", "Por favor, preencha todos os campos.")
