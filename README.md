@@ -15,8 +15,9 @@ vai iserir as informações de Nome, CPF, plano e valor da mensalidade.</p>
 # Sistema de Academia
 ## 🖥️​Funcionalidades
 <b>Usuário(ADM da academia):</b><br>
-  -> Cadastro dos alunos.<br>
-  -> Registo dos alunos cadastrados.<br>
-  -> Remover alunos.<hr>
+  -> Adicionar Membro.<br>
+     Editar Membro.<br>
+  -> Registrar Pagamento.<br>
+  -> Gerar Relatório.<hr>
 ## 👨🏾‍💻​🔧​Tecnologias Utilizadas
 <b>Python</b><br>
