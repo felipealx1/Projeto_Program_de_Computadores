@@ -10,7 +10,7 @@ Huggo Henrique Santos de Souza RGM:31654762<br>
 
 # Introdução:
 <p>Esse sistema desenvolvido na linguagem de programação <br>Python</br> irá realizar o cadastro de um possível aluno em uma academia de João Pessoa, onde o usuário do sistema
-vai iserir as informações de Nome, CPF, idade, plano e valor da mensalidade.</p>
+vai iserir as informações de Nome, CPF, plano e valor da mensalidade.</p>
 
 # Sistema de Academia
 ## 🖥️​Funcionalidades
