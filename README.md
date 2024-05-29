@@ -16,7 +16,7 @@ vai iserir as informações de Nome, CPF, plano e valor da mensalidade.</p>
 ## 🖥️​Funcionalidades
 <b>Usuário(ADM da academia):</b><br>
   -> Adicionar Membro.<br>
-     Editar Membro.<br>
+  -> Editar Membro.<br>
   -> Registrar Pagamento.<br>
   -> Gerar Relatório.<hr>
 ## 👨🏾‍💻​🔧​Tecnologias Utilizadas
